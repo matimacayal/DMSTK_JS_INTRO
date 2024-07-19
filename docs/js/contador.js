@@ -12,7 +12,7 @@ const contador = {
       this.movimientos < 10 ? "0" + this.movimientos : this.movimientos;
     this.movimientosUI.innerText = this.movimientosText;
 
-    if (this.movimientos >= this.movimientosMax) {
+    if (this.movimientos >= this.movimientosMax && !modoRelax) {
       var tarjetasPendientes = document.querySelectorAll(
         ".tarjeta:not(.acertada)"
       );

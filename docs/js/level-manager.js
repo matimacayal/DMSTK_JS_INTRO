@@ -35,6 +35,13 @@ levelManager = {
     iniciarJuego();
   },
 
+  actualizaNivel: function () {
+    this.nivelTexto = this.nivelActual + 1;
+    this.nivelTexto =
+      this.nivelTexto < 10 ? "0" + this.nivelTexto : this.nivelTexto;
+    document.querySelector("#nivel").innerText = this.nivelTexto;
+  },
+
   reiniciarNiveles: function () {
     levelManager.nivelActual = 0;
     levelManager.actualizaNivelUI();

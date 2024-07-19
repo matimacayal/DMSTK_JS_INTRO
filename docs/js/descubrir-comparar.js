@@ -1,8 +1,6 @@
 function descubrir() {
   var descubiertas = document.querySelectorAll(".descubierta:not(.acertada)");
 
-  // this.setAttribute("ejemplo", "asedfasd");
-
   if (descubiertas.length > 1) {
     return;
   }

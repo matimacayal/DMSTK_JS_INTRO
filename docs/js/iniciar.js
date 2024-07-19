@@ -3,22 +3,33 @@ function iniciarJuego() {
 
   contador.reiniciarMovimientos();
   contador.actualizarMaxMovimientosUI();
+  document.querySelector(".selecciona-nivel").classList.remove("visible");
   document.querySelector("#endGame").classList.remove("visible");
   document.querySelector("#gameOver").classList.remove("visible");
+  document.querySelector("#timeOver").classList.remove("visible");
   document.querySelector("#subeNivel").classList.remove("visible");
 
   activaTarjetas();
 
-  clearInterval(cronometroJuego.id);
-  iniciarCronometro();
+  if (!modoRelax) {
+    clearInterval(cronometroJuego.id);
+    iniciarCronometro();
+  } else {
+    document.querySelector("#cronometro").classList.add("cronometro-oculto");
+    document.querySelector("#mov-total").classList.add("mov-total-oculto");
+    document.querySelector("#mov-slash").classList.add("mov-total-oculto");
+  }
 }
 
-iniciarJuego();
+function iniciaJuegoNormal() {
+  modoRelax = false;
+  document.querySelector("#bienvenida").classList.remove("visible");
+  iniciarJuego();
+  document.querySelector(".control-nivel").classList.add("control-oculto");
+}
 
-document.querySelectorAll(".reiniciar").forEach(function (elemento) {
-  elemento.addEventListener("click", levelManager.reiniciarNiveles);
-});
-
-document
-  .querySelector("#subir")
-  .addEventListener("click", levelManager.cargarNuevoNivel);
+function iniciaJuegoRelax() {
+  modoRelax = true;
+  document.querySelector("#bienvenida").classList.remove("visible");
+  iniciarJuego();
+}
